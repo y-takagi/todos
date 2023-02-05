@@ -1,0 +1,13 @@
+<ng-container *ngIf="state$ | async as state">
+  <div class="tw-py-8 tw-flex tw-flex-col tw-gap-4">
+    <h1>TODO一覧</h1>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(); formRef.reset()" #formRef>
+      <mat-form-field appearance="outline">
+        <input formControlName="title" matInput type="text" />
+      </mat-form-field>
+    </form>
+    <div *ngFor="let todo of state.todos">
+      {{ todo.title }}
+    </div>
+  </div>
+</ng-container>
